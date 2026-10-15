@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Metadatos para compartir con elegancia en WhatsApp -->
+    <meta property="og:title" content="XV Años | Nelly Lopez Silva">
+    <meta property="og:description" content="Tengo el honor de invitaros a la celebración de mi decimoquinto invierno. Tocar para revelar el decreto.">
+    <meta property="og:image" content="https://tu-dominio.com/assets/dragon.jpg">
+    <meta property="og:url" content="https://tu-dominio.com/">
+    <meta property="og:type" content="website">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XV Años | Nelly Lopez Silva</title>
+    
+    <!-- Fuentes secundarias elegantes para lectura -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* INTEGRACIÓN DE FUENTE LOCAL 'NOWDART' */
+        @font-face {
+            font-family: 'Nowdart';
+            src: url('assets/nowdart.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* PALETA DE COLORES EDITORIAL */
+        :root {
+            --cotton: #edebdd;           
+            --cherry-red: #810100;       
+            --maroon: #630000;           
+            --noir-black: #1b1717;       
+            --gold: #d4af37;             
+            --gold-dim: rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--noir-black);
+            background-image: url('assets/monograma-n.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--cotton);
+            font-family: 'Cormorant Garamond', serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Clase para bloquear el scroll mientras la portada está activa */
+        body.locked {
+            overflow-y: hidden;
+        }
+
+        .glass-overlay {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background: rgba(27, 23, 23, 0.85); 
+            backdrop-filter: blur(3px); 
+            display: flex;
+            justify-content: center;
+        }
+
+        /* PANTALLA DE BIENVENIDA (El Sello) */
+        #welcome-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--noir-black);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            cursor: pointer; /* Toda la pantalla es un botón ahora */
+            transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.5s;
+        }
+
+        #welcome-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .seal-monogram {
+            width: 130px;
+            height: 130px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+            padding: 5px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        /* Efecto hover al pasar el mouse por cualquier parte de la pantalla */
+        #welcome-screen:hover .seal-monogram {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(129, 1, 0, 0.8);
+        }
+
+        .seal-monogram img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .welcome-text {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-top: 20px;
+            animation: pulse 2s infinite; /* Pequeña animación para invitar a tocar */
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; text-shadow: 0 0 10px var(--gold-dim); }
+            100% { opacity: 0.7; }
+        }
+
+        /* CONTENEDOR DE LA INVITACIÓN */
+        .main-invitation {
+            max-width: 550px;
+            width: 100%;
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        /* EL DRAGÓN */
+        .art-frame {
+            position: relative;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--gold-dim);
+            margin-bottom: 50px;
+        }
+
+        .art-frame::before {
+            content: '';
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            border: 1px solid rgba(129, 1, 0, 0.5); 
+        }
+
+        .art-frame img {
+            width: 100%;
+            display: block;
+            filter: contrast(1.1) brightness(0.9) grayscale(15%);
+        }
+
+        /* TIPOGRAFÍA PRINCIPAL */
+        .title-nowdart {
+            font-family: 'Nowdart', 'Cinzel', serif; 
+            font-size: 4.5rem;
+            color: var(--cotton);
+            line-height: 1;
+            margin-bottom: 10px;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.8);
+        }
+
+        .subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 6px;
+            color: var(--gold);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 50px;
+        }
+
+        .intro-text {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            font-weight: 300;
+            color: var(--cotton);
+            margin-bottom: 40px;
+        }
+
+        .parents-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #a89f91; 
+        }
+
+        .name-highlight {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            display: block;
+            margin: 10px 0 40px 0;
+            letter-spacing: 2px;
+        }
+
+        /* SEPARADORES ELEGANTES */
+        .divider {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+            margin: 0 auto 40px auto;
+        }
+
+        /* CONTADOR MINIMALISTA */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .countdown-box {
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--cotton);
+            display: block;
+            font-weight: 600;
+        }
+
+        .countdown-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        /* SECCIONES DE INFORMACIÓN */
+        .info-block {
+            margin-bottom: 50px;
+        }
+
+        .info-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .info-data {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        /* BOTONES DE ACCIÓN */
+        .btn-outline {
+            display: inline-block;
+            padding: 12px 25px;
+            border: 1px solid var(--gold);
+            background: transparent;
+            color: var(--cotton);
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--maroon);
+            border-color: var(--cherry-red);
+            color: var(--cotton);
+        }
+
+        /* REPRODUCTOR MÚSICA */
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1000;
+            background: rgba(27, 23, 23, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        footer {
+            margin-top: 60px;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--gold);
+            padding-bottom: 40px;
+        }
+    </style>
+</head>
+<!-- La clase 'locked' evita que puedan deslizar la página hacia abajo antes de abrir la invitación -->
+<body class="locked">
+
+    <!-- PANTALLA DE BIENVENIDA INTERACTIVA (Ahora todo el fondo responde al clic) -->
+    <div id="welcome-screen" onclick="openInvitation()">
+        <div class="seal-monogram">
+            <img src="assets/monograma-n.png" alt="Sello N">
+        </div>
+        <p class="welcome-text">Tocar para revelar</p>
+    </div>
+
+    <!-- AUDIO MEDIEVAL -->
+    <audio id="bg-music" loop>
+        <source src="https://actions.google.com/sounds/v1/ambiences/medieval_festival.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- BOTÓN DE MÚSICA -->
+    <div class="music-player" id="music-toggle" onclick="toggleMusic()">
+        <span id="music-icon" style="font-size: 1.2rem;">🎵</span>
+    </div>
+
+    <!-- CAPA DE CRISTAL SOBRE TU FONDO ROJO -->
+    <div class="glass-overlay">
+        <div class="main-invitation">
+            
+            <!-- EL ARTE PRINCIPAL -->
+            <div class="art-frame">
+                <img src="assets/dragon.png" alt="Dragón">
+            </div>
+
+            <h1 class="title-nowdart">Nelly</h1>
+            <span class="subtitle">XV Años</span>
+
+            <div class="divider"></div>
+
+            <p class="intro-text">
+                Agradecimiento: gracias a todos que ayudaron hacer este sueño realidad 
+            </p>
+            
+            <p class="parents-text">En compañía de mi amada madre</p>
+            <span class="name-highlight">Marian Silva Morales</span>
+
+            <div class="divider"></div>
+            <div class="info-block">
+                <h3 class="info-title">Padrinos de Velación</h3>
+                <p class="info-data" style="font-size: 1.1rem; color:#a89f91;">Paulino Morales Morales<br>&<br>Esperanza Rivera Ramirez</p>
+                </div>
+            <!-- CONTADOR -->
+            <div class="countdown-container" id="countdown">
+                <div class="countdown-box">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Días</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Horas</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Min</span>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- ITINERARIO -->
+            <div class="info-block">
+                <h3 class="info-title">Ceremonia</h3>
+                <p class="info-data">4:00 PM<br><span style="font-size:1rem; color:#a89f91;">Parroquia de Santa Úrsula Zimatepec</span></p>
+                <a href="https://maps.app.goo.gl/doSynwLPxehzgZAQ6?g_st=aw" target="_blank" class="btn-outline">Ver Ubicación</a>
+            </div>
+
+            <div class="info-block">
+                <h3 class="info-title">Banquete</h3>
+                <p class="info-data">5:30 PM<br><span style="font-size:1rem; color:#a89f91;">Salón de Eventos</span></p>
+                <a href="https://maps.app.goo.gl/XRzdB3TboQBJBKPH7?g_st=aw" target="_blank" class="btn-outline">Ver Ubicación</a>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- CÓDIGO DE ETIQUETA Y DETALLES -->
+            <div class="info-block">
+                <h3 class="info-title">Código de Vestimenta</h3>
+                <p class="info-data" style="font-size: 1.1rem;">Colores oscuros.<br><strong style="color:var(--cherry-red);">Estrictamente prohibido el uso de rojo o vino.</strong></p>
+            </div>
+
+            <div class="info-block">
+                <h3 class="info-title">Obsequio</h3>
+                <p class="info-data" style="font-size: 1.1rem;">Lluvia de sobres / Efectivo</p>
+            </div>
+
+          
+
+            <footer>
+                <p>Que vuestra presencia honre nuestra corte.</p>
+            </footer>
+
+        </div>
+    </div>
+
+    <script>
+        // LÓGICA DEL CONTADOR
+        const eventDate = new Date(2027, 0, 16, 16, 0, 0).getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "<p style='font-family: Cinzel; color: var(--gold); letter-spacing:2px;'>EL MOMENTO HA LLEGADO</p>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // AUDIO Y TRANSICIÓN DE APERTURA
+        const audio = document.getElementById('bg-music');
+        let isPlaying = false;
+
+        function openInvitation() {
+            // Desvanece la pantalla negra
+            document.getElementById('welcome-screen').classList.add('hidden');
+            // Desbloquea el deslizamiento de la página
+            document.body.classList.remove('locked');
+            
+            // Intenta reproducir el audio
+            audio.play().then(() => {
+                isPlaying = true;
+                document.getElementById('music-icon').innerText = '🔊';
+            }).catch(e => {
+                console.log("Audio bloqueado por el navegador:", e);
+                // Si el audio falla, la página se abre de todos modos
+            });
+        }
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                document.getElementById('music-icon').innerText = '🔇';
+            } else {
+                audio.play();
+                isPlaying = true;
+                document.getElementById('music-icon').innerText = '🔊';
+            }
+        }
+    </script>
+</body>
+</html>
